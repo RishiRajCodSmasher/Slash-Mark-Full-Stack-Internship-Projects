@@ -1,0 +1,88 @@
+//Backend (Node.js)://
+
+const express = require('express');
+const axios = require('axios');
+
+const app = express();
+
+app.get('/api/weather', (req, res) => {
+  const location = req.query.location;
+  const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+  const url = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&appid=${apiKey}`;
+
+  axios.get(url)
+   .then(response => {
+      const weatherData = response.data;
+      res.json(weatherData);
+    })
+   .catch(error => {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to fetch weather data' });
+    });
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+
+//Frontend (ReactJS)://
+
+import React, { useState, useEffect } from 'eact';
+import axios from 'axios';
+import { geolocated } from 'eact-geolocated';
+
+function App() {
+  const [location, setLocation] = useState('');
+  const [weatherData, setWeatherData] = useState({});
+
+  useEffect(() => {
+    if (location) {
+      axios.get(`/api/weather?location=${location}`)
+       .then(response => {
+          setWeatherData(response.data);
+        })
+       .catch(error => {
+          console.error(error);
+        });
+    }
+  }, [location]);
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+  };
+
+  const handleAutoDetectLocation = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      setLocation(`${latitude},${longitude}`);
+    });
+  };
+
+  return (
+    <div>
+      <h1>Weather Forecast</h1>
+      <input type="text" value={location} onChange={handleLocationChange} placeholder="Enter location" />
+      <button onClick={handleAutoDetectLocation}>Auto Detect Location</button>
+      {weatherData && (
+        <div>
+          <h2>Current Weather</h2>
+          <p>Temperature: {weatherData.list[0].main.temp}°C</p>
+          <p>Humidity: {weatherData.list[0].main.humidity}%</p>
+          <h2>5-Day Forecast</h2>
+          <ul>
+            {weatherData.list.slice(1, 6).map((day, index) => (
+              <li key={index}>
+                <p>Date: {day.dt_txt}</p>
+                <p>Temperature: {day.main.temp}°C</p>
+                <p>Humidity: {day.main.humidity}%</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default geolocated()(App);
