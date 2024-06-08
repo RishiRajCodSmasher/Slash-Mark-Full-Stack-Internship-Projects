@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - Your Fitness Companion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Get Fit with FitBuddy</h1>
+                        <p>Track your workouts, monitor your progress, and reach your fitness goals with our app.</p>
+                        <button class="btn-cta">Sign Up Now</button>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="fitbuddy-logo.png" alt="FitBuddy Logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>Workout Tracking</h2>
+                        <p>Log your exercises, sets, and reps with ease.</p>
+                        <img src="workout-tracking.png" alt="Workout Tracking">
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Progress Monitoring</h2>
+                        <p>See your progress over time with our interactive charts.</p>
+                        <img src="progress-monitoring.png" alt="Progress Monitoring">
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Personalized Plans</h2>
+                        <p>Get customized workout plans tailored to your goals.</p>
+                        <img src="personalized-plans.png" alt="Personalized Plans">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>What Our Users Say</h2>
+                        <p>"FitBuddy has helped me reach my fitness goals and stay motivated!" - John D.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>"I love how easy it is to track my workouts and see my progress." - Emily W.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="call-to-action">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Ready to Get Fit?</h2>
+                        <p>Sign up now and start achieving your fitness goals!</p>
+                        <button class="btn-cta">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 FitBuddy. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+h1, h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* Navigation */
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #666;
+}
+
+/* Hero Section */
+
+.hero {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.hero.container {
+    max-width: 1200px;
+    margin: 0 auto;
+   
